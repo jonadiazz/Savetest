@@ -1,29 +1,28 @@
 # Savetest
 
 ## Description:
-Savetest helps you save small test cases and run them on your command line application! Simple and easy! Easy and Simple!
+*Savetest* helps you save small test cases and run them on your command line application! Simple and easy! Easy and Simple!
 
-You provide the steps of your test case by simply providing the user input to Savetest
+You provide the steps of your test cases by simply writing the user input to *Savetest* (like you would normally for your app)
 
 ## Expected Result:
 Savetest will run the test suite on your application, display the results and return running times. Savetest decides quickly! 
 
-If an algorithm is not efficient it will return Time Limit Exceeded (TLE)
-i.e. your algorithm is not an algorithm (meaning it goes in an infinite loop) or worth, if your app runs at ![eq](http://latex.codecogs.com/gif.latex?O(n^7)) and ![equation](http://latex.codecogs.com/gif.latex?%281%5Cleq%20n%20%5Cleq%2010%5E9%29)
+If an algorithm is not efficient it will return *Time Limit Exceeded* (TLE)
+*i.e.* Your algorithm is not an algorithm (goes in an infinite loop) or worse, if your app runs at ![eq0](http://latex.codecogs.com/gif.latex?O(n^7)) where ![eq1](http://latex.codecogs.com/gif.latex?%281%5Cleq%20n%20%5Cleq%2010%5E9%29)
 
 Give it a try, it can improve your development speed!
 
-## Intructions
+## Instructions:
+1. Within the cli change to an empty directory in your Mac or Linux machine
+2. Run `git clone https://github.com/jonadiazz/Savetest.git`
+3. Now follow usage example
 
-1. Go to an empty folder within the CLI in your Mac or Linux
-2. Run
-```git clone https://github.com/jonadiazz/Savetest.git```
-3. Follow usage
+## Usage (with example):
+### a. Write a simple script to use for testing Savetest
 
-## Usage (with example)
-### a. Script for testing
+Write or copy this code into a modular_exp.py (file also included in *sample script* folder)
 
-Write or copy this code into a modular_exp.py
 ```python
 n = int(raw_input().strip())
 m = int(raw_input().strip())
@@ -31,27 +30,26 @@ m = int(raw_input().strip())
 print m % (2**n)
 ```
 
-This script takes 2 user inputs, applies the inverse of a modular exponentiation on those numbers and `print`s the value.
+This script takes 2 user inputs, and returns the inverse of a modular exponentiation ![eq2](http://latex.codecogs.com/gif.latex?m%20%5Cmod%202%5En)
 
-To run it do `python modular_exp.py`
-e.g. 
+Run: `pypy modular_exp.py`
+Input:
 ```
 4
 42
 ```
 It should return `10`.
 
-### b. Actual Savetest usage
+### b. Actual *Savetest* usage
 
-Now, we want to test the script with several values for `n` and `m`, so we need to input this information everytime we need to test `modular_exp.py`.
-However, everytime we make a change to our code we might need to re-run all the tests again, so it becomes tedious to repeat this task over and over.
+Now, we want to test the script with different values of *`n`* and *`m`*
 
-- Every test case needs to be separated by an empty line. So, just press enter 2 times after writing each test case.
-    - Savetest will prompt you to enter a new TEST case
-- To save all the tests and quit type `save()` anytime
+**Note:**
+- Every test case needs to be separated by an empty line. Just press enter twice to delimit each test case
+    - Savetest will then prompt you to enter a *new* test
+- Save all tests and quit by typing *`save()`* anytime
 
 #### Example:
-
 ```
 ~$ python savetestinput.py for modular_exp.py
 
@@ -79,7 +77,7 @@ However, everytime we make a change to our code we might need to re-run all the 
 ~$
 ```
 
-#### Now, to run this tests
+#### Now, to run these tests
 ```
 ~$ pypy savetest.py for a.py`
 ```
