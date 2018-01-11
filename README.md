@@ -33,6 +33,7 @@ print m % (2**n)
 This script takes 2 user inputs, and returns the inverse of a modular exponentiation ![eq2](http://latex.codecogs.com/gif.latex?m%20%5Cmod%202%5En)
 
 Run: `pypy modular_exp.py`
+
 Input:
 ```
 4
@@ -57,29 +58,25 @@ Now, we want to test the script with different values of *`n`* and *`m`*
 	Save and exit by writing command "save()" (without quotes)
 
 ╭─○	User input for TEST 0
-
-    4
-    42
+	4
+	42
 
 ╭─○	User input for TEST 1
-
 	1
 	58
 
 ╭─○	User input for TEST 2
-
 	98765432
 	23456789
-
-╭─○	User input for TEST 3
 
 	save()
 ~$
 ```
 
 #### Now, to run these tests
+
 ```
-~$ pypy savetest.py for a.py`
+~$ pypy savetest.py for modular_exp.py`
 ```
 It will produce the following output:
 ```
@@ -108,3 +105,6 @@ It will produce the following output:
     59 ms
 
 ```
+
+
+Now, add really big numbers to see how **Savetest** handles it with your application
