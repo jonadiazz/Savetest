@@ -13,6 +13,7 @@ if str(Options.VERBOSE) in args: v = 1
 if str(Options.VERSION) in args:
     print '--version'
 elif len(args)<3:
+    print P.savetest
     print P.usage
     print P.usage_ext+'\n'
     print P.usage_ext2+'\n'
