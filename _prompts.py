@@ -24,8 +24,8 @@ multiline = 'If you want to insert multiline input, use option "--m" (without qu
 need_tests = prompt+'you have to provide some test cases first, use command "add" (without quotes) to save some tests'
 
 art = [0]*5
-art[0] ="   _____ ___   __  __ ____   _____ ____ _____ ____\n"
-art[1] ="  /  __/ __ | / / / /  __/  /_  __/ __/  __/_  __/\n"
-art[2] =" (__  ) /_/ | \/ / /  __/    / / / __/__  ) / /\n"
-art[3] ="/____/_/ /__|  \__/____/    /_/ /___/____/ /_/\n"
+art[0] ="   _____ __   __  __ ____   ______ ____ ____ _____\n"
+art[1] ="  /  __/   | / / / /  __/  /_  __/  __/  __/_  __/\n"
+art[2] =" (__  ) /_ | \/ / /  __/    / / /  __/__  ) / /\n"
+art[3] ="/____/_/ |_|  \__/\___/    /_/  \___/____/ /_/\n"
 savetest = art[0]+art[1]+art[2]+art[3]
