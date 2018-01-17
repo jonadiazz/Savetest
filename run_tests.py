@@ -38,7 +38,8 @@ def runTests(testsuite, script):
 
         tct = int(1000 * (etime-itime))
         aat += tct
-        print '\t\t', r
+        r = '\n' + r
+        print '\n\t\t'.join(r.split('\n'))
         print "\t\t{0} ms".format(tct)
         tsn += 1
 
@@ -46,5 +47,5 @@ def runTests(testsuite, script):
     else: aat = aat / tsn
 
     ms = 'ms'
-    if int(aat)>1000: ms = 'ms (not so much milisecons anymore!)'
+    if int(aat)>1000: ms = 'ms (not so -miliseconds- anymore!)'
     return '\nAverage application time (AAT) is {0} {1}\n'.format(aat, ms)
