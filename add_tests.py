@@ -19,7 +19,7 @@ def addTests(app_name):
             if ''==user_input[0] or 'save()' in user_input[0]:
                 break
             test_i.append(user_input[0])
-        ui.append(test_i)
+        if test_i != []: ui.append(test_i)
         if 'save()' in user_input: break
 
     cases = dict()

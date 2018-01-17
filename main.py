@@ -5,19 +5,22 @@ import sys
 from run_tests import runTests
 from add_tests import addTests
 from get_suite import getSuite
+from parser import parseCommandArgs
 
 args = sys.argv
+
 v = 'verbose flag'
-v = 0
-if str(Options.VERBOSE) in args: v = 1
-if str(Options.VERSION) in args:
-    print '--version'
+cases = 'cases to include from testsuite'
+v, cases = parseCommandArgs(args)
+
+if str(Options.VERSION) in args: print '--version'
 elif len(args)<3:
     print P.savetest
     print P.usage
     print P.usage_ext+'\n'
     print P.usage_ext2+'\n'
     print P.usage_ext3+'\n'
+    print P.usage_ext4+'\n'
     quit()
 
 app_name, extension = args[2].split('.')
@@ -25,7 +28,7 @@ command = args[1]
 script = args[2]
 
 if command == str(Commands.RUN):
-    testsuite = getSuite(app_name)
+    testsuite = getSuite(app_name, cases)
     if testsuite is not None:
         ret = runTests(testsuite, script)
         if v: print ret
