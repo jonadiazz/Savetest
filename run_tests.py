@@ -1,3 +1,4 @@
+import resource
 import _prompts as P
 import subprocess
 import signal
@@ -10,7 +11,7 @@ def _handler(self):
     raise Exception()
 
 
-def runTests(testsuite, script):
+def runTests(testsuite, script, interpreter):
     signal.signal(signal.SIGALRM, _handler)
 
     tsn = 'test case number'
@@ -30,7 +31,7 @@ def runTests(testsuite, script):
         itime = time.time()
         try:
             ec = subprocess.Popen(['echo', test], stdout=subprocess.PIPE)
-            r = subprocess.check_output(['pypy', script], stdin=ec.stdout)
+            r = subprocess.check_output([interpreter, script], stdin=ec.stdout)
         except Exception, exc:
             r = exc
         etime = time.time()
@@ -49,3 +50,9 @@ def runTests(testsuite, script):
     ms = 'ms'
     if int(aat)>1000: ms = 'ms (not so -miliseconds- anymore!)'
     return '\nAverage application time (AAT) is {0} {1}\n'.format(aat, ms)
+
+
+# TODO: to check memory usage 
+# p = subprocess.Popen("./a.out")
+# p.wait()
+# print(resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss)
