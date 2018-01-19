@@ -6,7 +6,7 @@
 You provide the steps of your test cases by simply writing the user input to *Savetest* (like you would normally for your app)
 
 ## Expected Result:
-Savetest will run the test suite on your application, display the results and return running times. Savetest decides quickly! 
+Savetest will run the test suite on your application, display the results and return running times. Savetest decides quickly!
 
 If an algorithm is not efficient it will return *Time Limit Exceeded* (TLE)
 *i.e.* Your algorithm is not an algorithm (goes in an infinite loop) or worse, if your app runs at ![eq0](http://latex.codecogs.com/gif.latex?O(n^7)) where ![eq1](http://latex.codecogs.com/gif.latex?%281%5Cleq%20n%20%5Cleq%2010%5E9%29)
@@ -17,6 +17,9 @@ Give it a try, it can improve your development speed!
 1. Within the cli change to an empty directory in your Mac or Linux machine
 2. Run `git clone https://github.com/jonadiazz/Savetest.git`
 3. Now follow usage example
+
+**Tip:**
+- Create alias `alias savetest="python Savetest/main.py"`
 
 ## Usage (with example):
 ### a. Write a simple script to use for testing Savetest
@@ -52,7 +55,7 @@ Now, we want to test the script with different values of *`n`* and *`m`*
 
 #### Example:
 ```
-~$ python savetestinput.py for modular_exp.py
+~$ savetest add modular_exp.py
 
 ╰─○	Enter test cases separated by an empty line.
 	Save and exit by writing command "save()" (without quotes)
@@ -76,7 +79,7 @@ Now, we want to test the script with different values of *`n`* and *`m`*
 #### Now, to run these tests
 
 ```
-~$ pypy savetest.py for modular_exp.py`
+~$ savetest run modular_exp.py`
 ```
 It will produce the following output:
 ```

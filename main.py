@@ -11,7 +11,7 @@ args = sys.argv
 
 v = 'verbose flag'
 cases = 'cases to include from testsuite'
-v, cases = parseCommandArgs(args)
+v, interpreter, cases = parseCommandArgs(args)
 
 if str(Options.VERSION) in args: print '--version'
 elif len(args)<3:
@@ -21,6 +21,7 @@ elif len(args)<3:
     print P.usage_ext2+'\n'
     print P.usage_ext3+'\n'
     print P.usage_ext4+'\n'
+    print P.usage_ext5+'\n'
     quit()
 
 app_name, extension = args[2].split('.')
@@ -30,7 +31,7 @@ script = args[2]
 if command == str(Commands.RUN):
     testsuite = getSuite(app_name, cases)
     if testsuite is not None:
-        ret = runTests(testsuite, script)
+        ret = runTests(testsuite, script, interpreter)
         if v: print ret
     else:
         print P.need_tests
