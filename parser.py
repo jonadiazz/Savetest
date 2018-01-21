@@ -12,16 +12,16 @@ def parseCommandArgs(args):
         try:
             p = re.compile('--i\s+?(\w+)')
             m = p.search(line)
-            print m.group(1)
+            print(m.group(1))
             interpreter = str(m.group(1).strip())
-        except Exception, e:
-            print '\t\tPosibly, no interpreter provided'
+        except Exception as e:
+            print('\t\tPosibly, no interpreter provided')
             raise Exception(e)
     if str(Options.WITH_CASES) in args:
         try:
             p = re.compile('--with-cases\s+?(\d.*)+')
             m = p.search(line)
-            cases = map(int, m.group(1).strip().split(' '))
+            cases = list(map(int, m.group(1).strip().split(' ')))
         except:
             cases = []
     else: cases = []

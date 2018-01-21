@@ -11,11 +11,11 @@ def addTests(app_name):
     ui = list()
 
     while True:
-        print "{0}User input for TEST {1}\n".format(P.prompt, len(ui))
+        print("{0}User input for TEST {1}\n".format(P.prompt, len(ui)))
         user_input = 'user_input_line'
         test_i = list()
         while True:
-            user_input = raw_input('\t').strip().split('\n')
+            user_input = input('\t').strip().split('\n')
             if ''==user_input[0] or 'save()' in user_input[0]:
                 break
             test_i.append(user_input[0])
