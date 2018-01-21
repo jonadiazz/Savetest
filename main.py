@@ -19,9 +19,9 @@ elif len(args)<3:
     print(P.usage)
     print(P.usage_ext+'\n')
     print(P.usage_ext2+'\n')
+    print(P.usage_ext5+'\n')
     print(P.usage_ext3+'\n')
     print(P.usage_ext4+'\n')
-    print(P.usage_ext5+'\n')
     quit()
 
 path = args[2].split('/')
