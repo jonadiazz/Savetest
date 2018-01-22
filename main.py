@@ -6,6 +6,7 @@ from run_tests import runTests
 from add_tests import addTests
 from get_suite import getSuite
 from parser import parseCommandArgs
+from passing import setPassingFlags
 
 args = sys.argv
 
@@ -29,7 +30,11 @@ app_name, extension = path[-1].split('.')
 command = args[1]
 script = args[2]
 
-if command == str(Commands.RUN):
+if command == str(Commands.PASSING):
+    which_passing = args[3]
+    ret = setPassingFlags(app_name, which_passing)
+    print(ret)
+elif command == str(Commands.RUN):
     testsuite = getSuite(app_name, cases)
     if testsuite is not None:
         ret = runTests(testsuite, script, interpreter)
