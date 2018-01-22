@@ -55,11 +55,11 @@ def runTests(testsuite, script, interpreter):
         print("\t\t{0} ms".format(tct))
 
     if tsn==0: aat = tct
-    else: aat = aat / int(tsn)
+    else: aat = aat / (int(tsn)+1)
 
     ms = 'ms'
     if int(aat)>1000: ms = 'ms (not so -miliseconds- anymore!)'
-    return output, '\nAverage application time (AAT) is {0} {1}\n'.format(aat, ms)
+    return output, '\nAverage application time (AAT) is {0:.2f} {1}\n'.format(aat, ms)
 
 
 # TODO: to check memory usage 

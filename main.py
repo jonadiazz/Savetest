@@ -30,8 +30,9 @@ command = args[1]
 script = args[2]
 
 suite = TestSuite(app_name)
-if command == str(Commands.PASSING):
-    which_passing = list(input('Enter Test Case Number (TSN) of passing (separated by space):\n').split())
+if command == str(Commands.ATTEST):
+    if which_passing == []:
+        which_passing = list(input('Enter Test Case Number (TSN) of passing (separated by space):\n').split())
     ret = suite.setPassing(which_passing)
     print(ret)
 elif command == str(Commands.RUN):

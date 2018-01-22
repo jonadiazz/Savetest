@@ -10,11 +10,10 @@ def parseCommandArgs(args):
     for j in args: line += str(j) + ' '
 
     if str(Options.VERBOSE) in args: is_verbose = 1
-    if str(Commands.PASSING) in args:
+    if str(Commands.ATTEST) in args:
         try:
             p = re.compile('passing\s+?((?:\d\s)+)')
             m = p.search(line)
-            print(m.group(1))
             which_passing = list(map(int, m.group(1).strip().split()))
         except:
             which_passing = []

@@ -46,6 +46,7 @@ class TestSuite:
             with open(self.json_path, 'r+') as json_file:
                 cpy_json = json.load(json_file)
                 for e in passing:
+                    e = str(e)
                     try:
                         cpy_json[self.app_name][e]['passing'] = True
                         cpy_json[self.app_name][e]['expected'] = cpy_json[self.app_name][e]['output']
