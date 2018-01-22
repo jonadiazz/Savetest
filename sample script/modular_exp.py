@@ -1,5 +1,5 @@
 
-n=int(raw_input().strip())
-m=int(raw_input().strip())
+n=int(input().strip())
+m=int(input().strip())
 
-print m % (2**n)
+print(m % (2**n))
