@@ -1,3 +1,4 @@
+from utils.bcolors import bColors as C
 import resource
 import _prompts as P
 import subprocess
@@ -14,11 +15,16 @@ def _handler(self):
 def runTests(testsuite, script, interpreter):
     signal.signal(signal.SIGALRM, _handler)
 
+    output = dict()
     tsn = 'test case number'
     aat = 'average application time'
     tct = 'test case time'
     tsn, aat = 0, 0
-    for test_case in testsuite:
+    for tsn in testsuite:
+        test_case = testsuite[tsn]['input']
+        passing = testsuite[tsn]['passing']
+        expected = testsuite[tsn]['expected']
+
         if test_case==[]: continue
         print(P.running+"running {0} with test case {1}\n".format(script, tsn))
         test = ''
@@ -39,17 +45,21 @@ def runTests(testsuite, script, interpreter):
 
         tct = int(1000 * (etime-itime))
         aat += tct
-        r = '\n' + str(r)
-        print('\n\t\t'.join(r.split('\n')))
+        r = r.decode("utf-8")
+        output[tsn] = r.strip()
+        if passing:
+            if output[tsn] == expected:
+                print(C.OKGREEN+"passing\t"+C.ENDC+output[tsn])
+            else: print(C.FAIL+"failing\t"+C.ENDC+output[tsn]+C.FAIL+' -> expected: '+expected+C.ENDC)
+        else: print(C.WARNING+"attest\t\t"+C.ENDC+output[tsn])
         print("\t\t{0} ms".format(tct))
-        tsn += 1
 
     if tsn==0: aat = tct
-    else: aat = aat / tsn
+    else: aat = aat / int(tsn)
 
     ms = 'ms'
     if int(aat)>1000: ms = 'ms (not so -miliseconds- anymore!)'
-    return '\nAverage application time (AAT) is {0} {1}\n'.format(aat, ms)
+    return output, '\nAverage application time (AAT) is {0} {1}\n'.format(aat, ms)
 
 
 # TODO: to check memory usage 
