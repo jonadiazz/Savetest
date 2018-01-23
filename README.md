@@ -1,3 +1,31 @@
+
+```
+   _____ __   __  __ ____   ______ ____ ____ _____
+  /  __/   | / / / /  __/  /_  __/  __/  __/_  __/
+ (__  ) /_ | \/ / /  __/    / / /  __/__  ) / /
+/____/_/ |_|  \__/\___/    /_/  \___/____/ /_/
+
+usage: savetest <command> <arg> [--i] [--verbose] [--with-cases]
+
+<command>
+    run		tests your app with saved testsuite
+    add		adds new tests to your testsuite
+    attest	declare cases as passing if correct output is known
+		e.g. `savetest attest app.py passing 0 1 2` will set test cases 0,1 and 2 as passing
+
+<arg>
+    the name of your app e.g. app.py
+
+[--i]
+    required if not .py script - specify interpreter e.g. `--i lua` uses lua, default is python
+
+[--verbose]
+    optional - prints detailed info (recommended)
+
+[--with-cases]
+    optional - speficy cases e.g. `--with-cases 0 1` will run testcases 0 and 1 only
+
+```
 # Savetest
 
 ## Description:
