@@ -38,16 +38,17 @@ def runTests(testsuite, script, interpreter):
         try:
             ec = subprocess.Popen(['echo', test], stdout=subprocess.PIPE)
             r = subprocess.check_output([interpreter, script], stdin=ec.stdout)
-            r = r.decode("utf-8")
-        except Exception as exc:
-            print("There was an error, verify your program runs correctly with some basic input")
-            r = exc
+            if type(r)!=type(0) and type(r)!=type(""):
+                r = r.decode("utf-8").strip()
+        except subprocess.CalledProcessError as exc:
+            print("\n\t\tThere was an error, verify your program runs smoothly with some basic input.")
+            continue
         etime = time.time()
         signal.alarm(0)
 
         tct = int(1000 * (etime-itime))
         aat += tct
-        output[tsn] = r.strip()
+        output[tsn] = str(r)
         if passing:
             if output[tsn] == expected:
                 print(C.OKGREEN+"passing\t"+C.ENDC+output[tsn])
