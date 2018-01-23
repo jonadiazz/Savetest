@@ -1,3 +1,31 @@
+## Basic Usage
+```
+   _____ __   __  __ ____   ______ ____ ____ _____
+  /  __/   | / / / /  __/  /_  __/  __/  __/_  __/
+ (__  ) /_ | \/ / /  __/    / / /  __/__  ) / /
+/____/_/ |_|  \__/\___/    /_/  \___/____/ /_/
+
+usage: savetest <command> <arg> [--i] [--verbose] [--with-cases]
+
+<command>
+    run		tests your app with saved testsuite
+    add		adds new tests to your testsuite
+    attest	declare cases as passing if correct output is known
+		e.g. `savetest attest app.py passing 0 1 2` will set test cases 0,1 and 2 as passing
+
+<arg>
+    the name of your app e.g. app.py
+
+[--i]
+    required if not .py script - specify interpreter e.g. `--i lua` uses lua, default is python
+
+[--verbose]
+    optional - prints detailed info (recommended)
+
+[--with-cases]
+    optional - speficy cases e.g. `--with-cases 0 1` will run testcases 0 and 1 only
+
+```
 # Savetest
 
 ## Description:
@@ -11,7 +39,7 @@ Savetest will run the test suite on your application, display the results and re
 If an algorithm is not efficient it will return *Time Limit Exceeded* (TLE)
 *i.e.* Your algorithm is not an algorithm (goes in an infinite loop) or worse, if your app runs at ![eq0](http://latex.codecogs.com/gif.latex?O(n^7)) where ![eq1](http://latex.codecogs.com/gif.latex?%281%5Cleq%20n%20%5Cleq%2010%5E9%29)
 
-Give it a try, it can improve your development speed!
+Give it a try, it can improve your development speed by testing often and rapidly!
 
 ## Instructions:
 1. Within the cli change to an empty directory in your Mac or Linux machine
@@ -19,7 +47,8 @@ Give it a try, it can improve your development speed!
 3. Now follow usage example
 
 **Tip:**
-- Create alias `alias savetest="python Savetest/main.py"`
+- Create alias `alias savetest="python Savetest/main.py"` or put it in your $PATH
+- It is recommended to put in Cellar folder if you use Homebrew
 
 ## Usage (with example):
 ### a. Write a simple script to use for testing Savetest
@@ -35,7 +64,7 @@ print m % (2**n)
 
 This script takes 2 user inputs, and returns the inverse of a modular exponentiation ![eq2](http://latex.codecogs.com/gif.latex?m%20%5Cmod%202%5En)
 
-Run: `pypy modular_exp.py`
+Run: `python modular_exp.py`
 
 Input:
 ```
@@ -79,7 +108,7 @@ Now, we want to test the script with different values of *`n`* and *`m`*
 #### Now, to run these tests
 
 ```
-~$ savetest run modular_exp.py`
+~$ savetest run modular_exp.py
 ```
 It will produce the following output:
 ```

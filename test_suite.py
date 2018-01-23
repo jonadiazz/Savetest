@@ -36,7 +36,7 @@ class TestSuite:
                 json_file.seek(0)
                 json_file.write(json.dumps(cpy_json))
                 json_file.truncate()
-            return 'Output saved, use `passing` command to attest outputs are correct.'
+            return 'Output saved, use `attest` command to verify outputs are correct.'
         except:
             return 'An error occurred, couldn\' save output.'
 
