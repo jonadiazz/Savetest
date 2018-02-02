@@ -60,7 +60,7 @@ def runTests(testsuite, script, interpreter):
         print("\t\t{0} ms".format(tct))
 
     if tsn==0: aat = tct
-    else: aat = aat / (int(tsn)+1)
+    else: aat = aat / (int(len(testsuite)))
 
     ms = 'ms'
     if int(aat)>1000: ms = 'ms (not so -miliseconds- anymore!)'
