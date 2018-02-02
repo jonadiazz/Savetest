@@ -37,7 +37,10 @@ def runTests(testsuite, script, interpreter):
         itime = time.time()
         try:
             ec = subprocess.Popen(['echo', test], stdout=subprocess.PIPE)
-            r = subprocess.check_output([interpreter, script], stdin=ec.stdout)
+            if interpreter=='':
+                r = subprocess.check_output(["./"+script], stdin=ec.stdout)
+            else:
+                r = subprocess.check_output([interpreter, script], stdin=ec.stdout)
             if type(r)!=type(0) and type(r)!=type(""):
                 r = r.decode("utf-8").strip()
         except subprocess.CalledProcessError as exc:
