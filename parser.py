@@ -24,6 +24,7 @@ def parseCommandArgs(args):
             interpreter = str(m.group(1).strip())
         except Exception as e:
             print('\tNo interpreter provided, running as executable')
+            interpreter = ''
     if str(Options.WITH_CASES) in args:
         try:
             p = re.compile('--with-cases\s+?(\d.*)+')
