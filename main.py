@@ -37,13 +37,13 @@ if command == str(Commands.ATTEST):
     print(ret)
 elif command == str(Commands.RUN):
     testsuite, count = suite.getSuite(cases)
-    output = dict()
     if testsuite is not None:
-        output, ret = runTests(testsuite, script, interpreter)
+        output, accepted = runTests(testsuite, script, interpreter)
         confirmation = suite.saveOutput(output)
         if v:
-            print(ret)
             print(confirmation)
+            if accepted: print("All passing")
+            else: print("Did not pass some tests")
     else:
         print(P.need_tests)
         print(P.usage)

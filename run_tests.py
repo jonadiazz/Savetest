@@ -1,4 +1,4 @@
-from utils.bcolors import bColors as C
+from checker_log import CheckerLogs
 import resource
 import _prompts as P
 import subprocess
@@ -15,6 +15,7 @@ def _handler(self):
 def runTests(testsuite, script, interpreter):
     signal.signal(signal.SIGALRM, _handler)
 
+    checker = CheckerLogs()
     output = dict()
     tsn = 'test case number'
     aat = 'average application time'
@@ -26,11 +27,13 @@ def runTests(testsuite, script, interpreter):
         expected = testsuite[tsn]['expected']
 
         if test_case==[]: continue
-        print(P.running+"running {0} with test case {1}\n".format(script, tsn))
         test = ''
-        for x in test_case:
-            test = test +x+'\n'
-            print('\t\t'+x+'\n', end=' ')
+        tmp = ''
+        dump = {'Testcase':'', 'Output':'', 'Expected':''}
+        for t in test_case:
+            test = test+t+'\n'
+            tmp += '\t'+t+'\n'
+        dump['Testcase'] = tmp
 
         r = 'response'
         signal.alarm(2)
@@ -52,19 +55,22 @@ def runTests(testsuite, script, interpreter):
         tct = int(1000 * (etime-itime))
         aat += tct
         output[tsn] = str(r)
+        verdict = ""
         if passing:
-            if output[tsn] == expected:
-                print(C.OKGREEN+"passing\t"+C.ENDC+output[tsn])
-            else: print(C.FAIL+"failing\t"+C.ENDC+output[tsn]+C.FAIL+' -> expected: '+expected+C.ENDC)
-        else: print(C.WARNING+"attest\t\t"+C.ENDC+output[tsn])
-        print("\t\t{0} ms".format(tct))
+            verdict = "OK" if output[tsn] == expected else "FAIL"
+        else: verdict = "None: needs attest"
 
-    if tsn==0: aat = tct
-    else: aat = aat / (int(len(testsuite)))
+        dump['Output'] = output[tsn]
+        dump['Expected'] = expected
+        checker.logIt(dump, tsn, tct, verdict)
+
+    for i in checker.logs: print(i)
+    aat = checker.getAverageApplicationTime()
 
     ms = 'ms'
     if int(aat)>1000: ms = 'ms (not so -miliseconds- anymore!)'
-    return output, '\nAverage application time (AAT) is {0:.2f} {1}\n'.format(aat, ms)
+    print('\nAverage application time (AAT) is {0:.2f} {1}\n'.format(aat, ms))
+    return output, checker.accepted
 
 
 # TODO: to check memory usage 
