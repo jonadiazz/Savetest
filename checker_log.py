@@ -22,9 +22,9 @@ class CheckerLogs:
         data += "\n\tInput\n"
         data += dump['Testcase']
         data += "\n\tOutput\n\t"
-        data += "\n\t".join(dump['Output'].split())
+        data += "\n\t".join(dump['Output'].split("\n"))
         data += "\n\n\tExpected\n\t"
-        data += "\n\t".join(dump['Expected'].split())
+        data += "\n\t".join(dump['Expected'].split("\n"))
 
         self.logs.append(data)
         self.time += time
