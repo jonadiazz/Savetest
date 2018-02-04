@@ -56,4 +56,4 @@ class TestSuite:
                 json_file.write(json.dumps(cpy_json))
                 json_file.truncate()
                 return '\nSuccessfully set passing flags, congrats!'
-        return None
+        return "None test cases saved"
